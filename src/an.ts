@@ -1,40 +1,40 @@
 const encode = (text: string): string => {
   if (!text) {
-    return "ERROR: text not found!";
+    return 'ERROR: text not found!';
   }
   return text
-    .split(" ")
+    .split(' ')
     .map((word) =>
       word
         .toLowerCase()
-        .split("")
+        .split('')
         .map((char) => {
           const charCode = char.charCodeAt(0);
-          return charCode >= 97 && charCode <= 122 ? charCode - 96 : "";
+          return charCode >= 97 && charCode <= 122 ? charCode - 96 : '';
         })
         .filter((n) => n)
-        .join("-"),
+        .join('-')
     )
-    .join(" ");
+    .join(' ');
 };
 const decode = (encodedText: string): string => {
   if (!encodedText) {
-    return "ERROR: encodedText not found!";
+    return 'ERROR: encodedText not found!';
   }
   return encodedText
-    .split(" ")
+    .split(' ')
     .map((word) =>
       word
-        .split("-")
+        .split('-')
         .map((num) => {
           const charCode = Number(num) + 96;
           return charCode >= 97 && charCode <= 122
             ? String.fromCharCode(charCode)
-            : "";
+            : '';
         })
-        .join(""),
+        .join('')
     )
-    .join(" ");
+    .join(' ');
 };
 
 export { encode, decode };
