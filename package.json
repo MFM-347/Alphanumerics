@@ -1,8 +1,8 @@
 {
-  "name": "alphalphanumericsumerics",
+  "name": "alphanumerics",
   "version": "0.9.7",
-  "description": "Alphalphanumericsumerics is a JavaScript library that encodes alphanumericsd decodes letters of english alphabet into numbers.",
-  "homepage": "https://github.com/MFM-347/Alphalphanumericsumerics#readme",
+  "description": "alphanumerics is a JavaScript library that encodes alphanumericsd decodes letters of english alphabet into numbers.",
+  "homepage": "https://github.com/MFM-347/alphanumerics#readme",
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
@@ -46,11 +46,11 @@
     "mfm3478"
   ],
   "bugs": {
-    "url": "https://github.com/MFM-347/Alphalphanumericsumerics/issues"
+    "url": "https://github.com/MFM-347/alphanumerics/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MFM-347/Alphalphanumericsumerics.git"
+    "url": "git+https://github.com/MFM-347/alphanumerics.git"
   },
   "author": "MFM-347",
   "license": "MIT"
