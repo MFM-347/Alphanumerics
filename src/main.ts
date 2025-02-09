@@ -1,1 +1,1 @@
-export { encode, decode } from './an';
+export { encode, decode } from './alphanumerics'
