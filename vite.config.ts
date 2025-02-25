@@ -1,5 +1,6 @@
 /// <reference types="vitest" />
 // Configure Vitest (https://vitest.dev/config/)
+
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
@@ -10,7 +11,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'alphanumerics',
-      fileName: 'alphanumerics',
+      fileName: (format) => `alphanumerics.${format}.js`,
     },
   },
   plugins: [dts()],

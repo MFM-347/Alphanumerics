@@ -1,46 +1,57 @@
 {
   "name": "alphanumerics",
-  "version": "0.9.7",
-  "description": "alphanumerics is a JavaScript library that encodes alphanumericsd decodes letters of english alphabet into numbers.",
-  "homepage": "https://github.com/MFM-347/alphanumerics#readme",
+  "version": "0.9.8",
+  "description": "alphanumerics is a typescripted library that encodes and decodes letters of english alphabet into numbers.",
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
     "test": "vitest",
     "lint": "eslint . --fix",
     "format": "prettier -w .",
+    "size": "size-limit",
     "prepublishOnly": "npm run build"
   },
   "exports": {
     ".": {
-      "import": "./dist/alphanumerics.js",
-      "require": "./dist/alphanumerics.umd.cjs"
+      "import": "./dist/alphanumerics.es.js",
+      "require": "./dist/alphanumerics.umd.js"
     }
   },
-  "main": "./dist/alphanumerics.umd.cjs",
-  "module": "./dist/alphanumerics.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/alphanumerics.umd.js",
+  "module": "./dist/alphanumerics.es.js",
+  "types": "./dist/alphanumerics.d.ts",
   "files": [
     "dist"
   ],
+  "size-limit": [
+    {
+      "path": "dist/*",
+      "limit": "2 kB"
+    }
+  ],
   "devDependencies": {
-    "@eslint/js": "^9.20.0",
-    "@types/node": "^22.13.1",
-    "eslint": "^9.20.0",
-    "globals": "^15.14.0",
-    "prettier": "^3.4.2",
-    "typescript": "~5.7.2",
-    "typescript-eslint": "^8.23.0",
-    "vite": "^6.0.1",
+    "@eslint/js": "^9.21.0",
+    "@size-limit/file": "^11.2.0",
+    "@types/node": "^22.13.5",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.2",
+    "size-limit": "^11.2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.25.0",
+    "vite": "^6.2.0",
     "vite-plugin-dts": "^4.5.0",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.7"
   },
   "keywords": [
     "encode",
     "decode",
-    "alphalphanumericsumeric",
-    "text encoding",
-    "string malphanumericsipulation",
+    "alphanumerics",
+    "text",
+    "encoding",
+    "string manipulation",
+    "manipulation",
+    "typescript",
     "utility",
     "ts",
     "mfm3478"
@@ -52,6 +63,7 @@
     "type": "git",
     "url": "git+https://github.com/MFM-347/alphanumerics.git"
   },
+  "homepage": "https://github.com/MFM-347/alphanumerics#readme",
   "author": "MFM-347",
   "license": "MIT"
 }

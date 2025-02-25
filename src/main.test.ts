@@ -1,25 +1,27 @@
-import { test, expect } from 'vitest'
+import { test, expect, describe } from 'vitest'
 import { encode, decode } from './main'
 
-function on() {
-  const text = 'Hello World!'
-  test('convert text string to alphanumeric', () => {
-    expect(encode(text, '-', '^')).toBe('^8-5-12-12-15 ^23-15-18-12-4')
+describe('Encoding and Decoding Tests', () => {
+  describe('uppercase on tests', () => {
+    const text = 'Hello World!'
+    const encodedText = '^8=5=12=12=15 ^23=15=18=12=4'
+    test('convert text string to alphanumeric', () => {
+      expect(encode({ text, delimiter: '=', capitalizer: '^' })).toBe(encodedText)
+    })
+    test('convert alphanumeric string to text', () => {
+      expect(decode({ encodedText, delimiter: '=', capitalizer: '^' })).toBe('Hello World')
+    })
   })
-  const encodedText = '^8-5-12-12-15 ^23-15-18-12-4'
-  test('convert alphanumeric string to text', () => {
-    expect(decode(encodedText, '-', '^')).toBe('Hello World')
+  describe('uppercase off tests', () => {
+    const text = 'hELLO wORLD!'
+    const encodedText = '^8=5=12=12=15 ^23=15=18=12=4'
+    test('convert text string to alphanumeric (uppercase enabled)', () => {
+      expect(encode({ text, delimiter: '=', capitalizer: '^', uppercase: true })).toBe(encodedText)
+    })
+    test('convert alphanumeric string to text (uppercase enabled)', () => {
+      expect(decode({ encodedText, delimiter: '=', capitalizer: '^', uppercase: true })).toBe(
+        'hELLO wORLD',
+      )
+    })
   })
-}
-on()
-function off() {
-  const text = 'hELLO wORLD!'
-  test('convert text string to alphanumeric', () => {
-    expect(encode(text, '-', '^', true)).toBe('^8-5-12-12-15 ^23-15-18-12-4')
-  })
-  const encodedText = '^8-5-12-12-15 ^23-15-18-12-4'
-  test('convert alphanumeric string to text', () => {
-    expect(decode(encodedText, '-', '^', true)).toBe('hELLO wORLD')
-  })
-}
-off()
+})

@@ -1,11 +1,13 @@
-export const encode = (
-  text: string,
-  delimitter: string,
-  capitalizer: string,
-  uppercase: boolean = false,
-): string => {
+type options = {
+  encodedText?: string
+  text?: string
+  delimiter?: string
+  capitalizer?: string
+  uppercase?: boolean
+}
+export const encode = (ops: options): string => {
+  const { text, delimiter = '-', capitalizer = '', uppercase = false } = ops
   if (!text) return 'ERROR: text not found!'
-  if (!delimitter) return 'ERROR: delimitterer not found!'
   return text
     .split(' ')
     .map((word) =>
@@ -24,26 +26,21 @@ export const encode = (
           return ''
         })
         .filter(Boolean)
-        .join(delimitter),
+        .join(delimiter),
     )
     .join(' ')
 }
-export const decode = (
-  encodedText: string,
-  delimitter: string,
-  capitalizer: string,
-  uppercase: boolean = false,
-): string => {
+export const decode = (ops: options): string => {
+  const { encodedText, delimiter = '-', capitalizer = '', uppercase = false } = ops
   if (!encodedText) return 'ERROR: encodedText not found!'
-  if (!delimitter) return 'ERROR: delimitterer not found!'
   return encodedText
     .split(' ')
     .map((word) =>
       word
-        .split(delimitter)
+        .split(delimiter)
         .map((code) => {
           if (code.startsWith(capitalizer)) {
-            const parsed = parseInt(code.slice(1), 10)
+            const parsed = parseInt(code.slice(capitalizer.length), 10)
             if (isNaN(parsed)) return ''
             const charCode = parsed + 96
             return charCode >= 97 && charCode <= 122
